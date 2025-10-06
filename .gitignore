@@ -1,0 +1,26 @@
+# ----------------------------------------------------
+# 1. Skedarët e Mjedisit (Duhet të jenë Sekret)
+# ----------------------------------------------------
+# Skedari i variablave të mjedisit të fshehtë
+.env
+
+# ----------------------------------------------------
+# 2. Direktori-të e Moduleve (Shumë të mëdha, instalohen në host)
+# ----------------------------------------------------
+# Modulet e Backend-it
+/server/node_modules
+
+# Modulet e Frontend-it
+/sfidal-new/node_modules
+
+# ----------------------------------------------------
+# 3. Produktet e Ndërtimit (Build Products)
+# ----------------------------------------------------
+# Produkti i ndërtuar i React (e krijon Render vetë)
+/sfidal-new/build
+
+# ----------------------------------------------------
+# 4. Skedarët e Sistemit Operativ (macOS/Windows)
+# ----------------------------------------------------
+.DS_Store
+Thumbs.db

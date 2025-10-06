@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f5;
+    color: #444444;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+    color: #212121;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.intro-section {
+    position: relative;
+    background-image: 
+        linear-gradient(to bottom, rgba(247, 247, 245, 0.3), rgba(247, 247, 245, 1)), 
+        url('/images/golden.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-color: #f7f7f5;
+    padding: 8rem 2rem 5rem; 
+    text-align: center;
+    max-width: 100%; 
+}
+  
+.intro-content h1 {
+    font-size: clamp(3rem, 7vw, 5rem);
+    margin-bottom: 1.5rem;
+    color: #212121;
+    z-index: 10;
+    position: relative; 
+}
+  
+.intro-content p {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    margin-bottom: 3rem;
+    line-height: 1.7;
+    color: #444444;
+    z-index: 10;
+    position: relative; 
+}
+  
+.cta-button {
+    background-color: #c89f5d;
+    color: white;
+    padding: 1rem 3rem;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(200, 159, 93, 0.4);
+}
+  
+.cta-button:hover {
+    background-color: #a3814b;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(200, 159, 93, 0.6);
+}
+
+.apartment-gallery-section {
+    background-color: #ffffff; 
+    padding: 5rem 2rem;
+    text-align: center;
+}
+  
+.apartment-gallery-section h2 {
+    color: #212121;
+}
+
+.about-apartment-section {
+    background-color: #f7f7f5; 
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    text-align: left;
+}
+  
+.about-apartment-section h2 {
+    color: #c89f5d; 
+    margin-bottom: 3rem;
+}
+  
+.about-content p {
+    line-height: 1.8;
+    color: #444444;
+    font-size: 1.15rem; 
+    font-weight: 300;
+}
+
+.amenities-section {
+    background-color: #ffffff; 
+    padding: 5rem 2rem;
+    text-align: center;
+}
+  
+.amenities-section h2 {
+    color: #212121;
+    margin-bottom: 3rem;
+}
+
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+  
+.amenity-item {
+    background-color: #fcfcfc; 
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05); 
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
+    border: 1px solid #eeeeee;
+}
+  
+.amenity-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+  
+.amenity-item .icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    filter: drop-shadow(0 0 5px rgba(200, 159, 93, 0.5)); 
+}
+  
+.amenity-item h3 {
+    color: #212121;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+  
+.amenity-item p {
+    color: #666666;
+    line-height: 1.6;
+}
+
+.location-section {
+    background-color: #f7f7f5;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+  
+.location-content h2 {
+    color: #212121;
+}
+  
+.location-content p {
+    color: #444444;
+}
+  
+.location-content .address {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #c89f5d; 
+}
+  
+.map-container iframe {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease-in-out;
+}
+.map-container iframe:hover {
+    transform: scale(1.005);
+}
+  
+.map-link a {
+    color: #c89f5d; 
+    font-weight: 600;
+}
+  
+.map-link a:hover {
+    color: #a3814b;
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .amenities-grid {
+      grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-content h1 {
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
+    }
+    
+    h2 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+    }
+  
+    .intro-section,
+    .apartment-gallery-section,
+    .about-apartment-section,
+    .amenities-section,
+    .location-section {
+      padding: 4rem 1rem;
+    }
+
+    .amenities-grid {
+      grid-template-columns: 1fr; 
+      gap: 1.5rem;
+    }
+
+    .amenity-item {
+        padding: 2rem;
+    }
+}
+
