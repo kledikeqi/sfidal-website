@@ -8,8 +8,8 @@ import path from 'path';
 // Importimi i Rrugëve dhe Middleware
 import partnershipRoutes from './routes/partnership.js';
 import userRoutes from './routes/userRoutes.js'; 
-// Importimi i Error Handler (supozojmë se do ta shtojmë më vonë)
-// import { notFound, errorHandler } from './middleware/errorMiddleware.js'; 
+// Importimi i Error Handler
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 // Konfiguro dotenv për të ngarkuar variablat e mjedisit nga .env
 dotenv.config();
@@ -63,6 +63,8 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 // ⚠️ FUNDI I LOGJIKËS SË DEPLOYMENT
+app.use(notFound); // Kap rrugët që nuk ekzistojnë
+app.use(errorHandler); // Trajton të gjitha gabimet
 
 // 8. Serveri (Niset pas lidhjes me DB)
 app.listen(PORT, () => {
