@@ -44,11 +44,11 @@ const Footer = () => {
                         </li>
                         <li className="flex items-center">
                             <Phone size={20} className="text-orange-600 mr-3 flex-shrink-0" />
-                            <a href="tel:+355xxxxxxxx">+355682062798</a>
+                            <a href="tel:+355682062798">+355682062798</a>
                         </li>
                         <li className="flex items-center">
                             <Mail size={20} className="text-orange-600 mr-3 flex-shrink-0" />
-                            <a href="mailto:info@sfidal.al">sfidal@yahoo.it</a>
+                            <a href="mailto:sfidalb@yahoo.it">sfidalb@yahoo.it</a>
                         </li>
                     </ul>
                 </div>
