@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 // Shtojmë lucide-react për ikona, nëse i keni përdorur në pjesë të tjera
-import { Factory, Briefcase, Mail } from 'lucide-react'; 
+// import { Factory, Briefcase, Mail } from 'lucide-react'; 
 
 // URL-ja e API-së së Backend-it (tani duke përdorur portën 5001)
-const API_URL = 'http://localhost:5001/api/partneritet'; 
+const API_URL = '/api/partneritet';
 
 // Komponenti i thjeshtë i formularit, i përditësuar për API
 function SimpleContactForm() {

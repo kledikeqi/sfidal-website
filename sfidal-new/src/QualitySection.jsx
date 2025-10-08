@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Factory, Users, CheckCircle, Leaf, Handshake, Zap, Globe } from 'lucide-react'; // Sigurojmë që ikonat janë importuar saktë
+import { Shield, Factory, Users, CheckCircle, Leaf, Handshake } from 'lucide-react'; // Sigurojmë që ikonat janë importuar saktë
 
 const QualitySection = () => {
     // Përdorim klasën SCSS 'page-padding'
