@@ -1,10 +1,17 @@
 import React from 'react';
 import './Sfidal.scss'; 
-import QualitySection from './QualitySection';
+import QualitySection from './QualitySection'; // Nuk përdoret, por e lëmë siç ishte
 import { Link } from 'react-router-dom';
 
 // Imazhi Placeholder (për të simuluar këpucën e shabllonit)
 const SfidalHeroImage = "./images/sfidal-hero.jpg";
+
+// Komponenti i Ikonës SVG (Për procesin)
+const IconSvg = ({ children }) => (
+  <div style={{ display: 'inline-block', marginRight: '15px', color: '#FF6E1D' }}>
+    {children}
+  </div>
+);
 
 
 function HomePage() {
@@ -25,7 +32,7 @@ function HomePage() {
             to="/partneritet" 
             className="hero-cta-icon" 
           >
-            <span className="icon">➕</span>
+            {/* Fiks: Fshijmë span-in bosh dhe e lëmë vetëm tekstin e butonit */}
             DISKUTONI PARTNERITETIN
           </Link>
         </div>
@@ -52,7 +59,13 @@ function HomePage() {
           
           <div className="process-step">
             <span className="step-number">1</span>
-            <h3>Reparti i Prestarisë</h3>
+            <h3>
+              {/* Shtohet ikona për theks vizual */}
+              <IconSvg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </IconSvg>
+              Reparti i Prestarisë
+            </h3>
             <p>
               Përgatitja dhe kontrolli i lëkurës. Përdorim skema prerjeje për shfrytëzim maksimal, duke pasur parasysh edhe defektet natyrale të materialit.
             </p>
@@ -60,7 +73,13 @@ function HomePage() {
 
           <div className="process-step">
             <span className="step-number">2</span>
-            <h3>Reparti i Qepjes dhe Aksesorëve</h3>
+            <h3>
+              {/* Shtohet ikona për theks vizual */}
+              <IconSvg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 11l4.5-4.5M21 7.5l-4.5 4.5M10 20l-1.75-5.25L2 13 4 2h16l2 11-6.25 1.75L14 20l-4-4-4 4"/></svg>
+              </IconSvg>
+              Reparti i Qepjes dhe Aksesorëve
+            </h3>
             <p>
               Faqet e prera kalojnë në qepje, duke krijuar artikullin sipas porosisë së klientit. Vendosen aksesorët përkatës dhe bëhet kontrolli përfundimtar.
             </p>
@@ -68,7 +87,13 @@ function HomePage() {
           
           <div className="process-step">
             <span className="step-number">3</span>
-            <h3>Reparti i Montimit dhe Finiturës</h3>
+            <h3>
+              {/* Shtohet ikona për theks vizual */}
+              <IconSvg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.75 6H2.25l-.75-3h20.5z"/><path d="M20 10l-1 9H5L4 10h16z"/><path d="M8 10v4M16 10v4"/></svg>
+              </IconSvg>
+              Reparti i Montimit dhe Finiturës
+            </h3>
             <p>
               Procesi i premontimit dhe futja në kallëp. Përfshin lyerjen me mastic dhe injektimin e shollave, duke e çuar produktin në fazën e tij përfundimtare.
             </p>
@@ -76,6 +101,9 @@ function HomePage() {
 
         </div>
       </section>
+
+      {/* Nëse dëshironi të shfaqni seksionin e cilësisë, e thërrisni këtu: 
+      <QualitySection /> */}
 
     </main>
   );

@@ -151,6 +151,21 @@ margin-left: 30px; /* Shton një ndarje të qartë midis navigimit dhe butonit *
 display: block;
 }
 
+//  Stilimi i Ikonës së Menysë (Hamburger) /
+.menu-toggle {
+display: none; // Fshehur në desktop */
+cursor: pointer;
+border: none;
+background: transparent;
+padding: 10px;
+z-index: 1100;
+}
+.menu-toggle svg {
+color: $primary-dark;
+width: 28px;
+height: 28px;
+}
+
 // --- HERO SECTION STYLES (EKZAKT SI SHABLLONI) ---
 .hero-wrapper {
 min-height: 100vh;
@@ -456,79 +471,80 @@ margin-top: 1rem;
 
 // --- FOOTER STYLES ---
 .main-footer {
-    background-color: $primary-dark; // E zezë
+background-color: $primary-dark; // E zezë
+color: #aaaaaa;
+padding: 3.5rem 5vw; // Më shumë hapësirë
+text-align: left; // Tani allinjohet majtas
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; // Tre kolona: 1 e gjerë, 2 standarde
+    gap: 3rem;
+}
+
+h4 {
+    color: $text-light; // Titujt e bardhë
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.75rem;
+}
+
+a {
     color: #aaaaaa;
-    padding: 3.5rem 5vw; // Më shumë hapësirë
-    text-align: left; // Tani allinjohet majtas
+    font-weight: 400;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
 
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr; // Tre kolona: 1 e gjerë, 2 standarde
-        gap: 3rem;
-    }
+a:hover {
+    color: $accent-orange; // Hover me portokalli
+}
 
-    h4 {
-        color: $text-light; // Titujt e bardhë
-        font-weight: 700;
-        font-size: 1.15rem;
-        margin-bottom: 1.5rem;
-    }
+.footer-logo {
+    height: 40px;
+    margin-bottom: 1rem;
+    filter: brightness(0) invert(1); // Sigurohuni që logo të jetë e bardhë në sfondin e errët
+}
 
-    ul {
-        list-style: none;
-        padding: 0;
-    }
+.copyright {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: #777;
+}
 
-    li {
-        margin-bottom: 0.75rem;
-    }
-
-    a {
-        color: #aaaaaa;
-        font-weight: 400;
-        transition: color 0.3s;
-        font-size: 0.95rem;
-    }
-
-    a:hover {
-        color: $accent-orange; // Hover me portokalli
-    }
-
-    .footer-logo {
-        height: 40px;
-        margin-bottom: 1rem;
-        filter: brightness(0) invert(1); // Sigurohuni që logo të jetë e bardhë në sfondin e errët
-    }
-
-    .copyright {
-        text-align: center;
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 0.85rem;
-        color: #777;
-    }
 }
 
 // Stilet për tabletë/celularë
 @media (max-width: 992px) {
-    .main-footer .footer-content {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-        text-align: center;
-    }
-    .main-footer h4 {
-        text-align: center;
-    }
-    .main-footer ul {
-        text-align: center;
-    }
-    .main-footer .footer-logo {
-        margin-left: auto;
-        margin-right: auto;
-    }
+.main-footer .footer-content {
+grid-template-columns: 1fr;
+gap: 2.5rem;
+text-align: center;
+}
+.main-footer h4 {
+text-align: center;
+}
+.main-footer ul {
+text-align: center;
+}
+.main-footer .footer-logo {
+margin-left: auto;
+margin-right: auto;
+}
 }
 
 // --- MEDIA QUERIES (PËRGJIGJE) ---
@@ -536,9 +552,18 @@ margin-top: 1rem;
 .main-header {
 position: relative;
 height: auto;
-padding: 20px;
+padding: 20px 5vw; /* Rregullojmë padding-un për të qenë konsistent */
 background-color: #ffffff;
 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* ⚠️ Fiksi Kryesor: Fsheh Menynë e plotë në Mobile /
+.main-nav {
+display: none;
+}
+/ Shfaq Ikonën e Menysë në Mobile */
+.menu-toggle {
+display: block;
 }
 
 .hero-wrapper {
