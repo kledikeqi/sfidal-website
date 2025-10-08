@@ -39,8 +39,8 @@ const ServicesPage = () => {
     // Përdorim klasën SCSS 'page-padding'
     <div className="page-padding min-h-screen font-sans"> 
       
-      {/* Seksioni i Hyrjes, Qendërzuar */}
-      <header className="max-w-4xl mx-auto text-center mb-16 px-4">
+      {/* Seksioni i Hyrjes - RREGULLUAR QENDËRZIMI ME header-content-wrapper */}
+      <header className="header-content-wrapper mb-16 px-4">
         
         <h2>Procesi Fason, i Projektuar për Eksport</h2>
         
@@ -66,32 +66,38 @@ const ServicesPage = () => {
         ))}
       </div>
 
-      {/* Seksioni i Përgjegjshmërisë - Tani me klasën e re SCSS */}
-      <div className="mt-24 pt-12 border-t border-gray-200 max-w-6xl mx-auto px-4">
-        <h3 className="text-center">Angazhimi Mjedisor dhe Social</h3>
-        <p className="text-center text-lg text-gray-600 mb-12">Ne shkojmë përtej cilësisë së produktit, duke garantuar përgjegjshmëri në mjedis dhe etikë pune.</p>
+      {/* Seksioni i Përgjegjshmërisë - NDRYSHUAR:
+        Shtojmë një div wrapper me ngjyrë të lehtë (bg-gray-100) dhe hapësirë shtesë (py-20) 
+        për t'u ndarë vizualisht nga seksioni i kartave lart.
+      */}
+      <div className="bg-gray-100 py-20 mt-24"> 
+        <div className="max-w-6xl mx-auto px-4">
+            <h3 className="text-center">Angazhimi Mjedisor dhe Social</h3>
+            <p className="text-center text-lg text-gray-600 mb-12">Ne shkojmë përtej cilësisë së produktit, duke garantuar përgjegjshmëri në mjedis dhe etikë pune.</p>
 
-        <div className="commitment-grid">
-            
-            <div className="commitment-card">
-                <Globe size={40} className="text-orange-600 mx-auto mb-3" />
-                <h4 className="font-bold text-xl mb-2 text-stone-800">Mjedis dhe Mbetje</h4>
-                <p className="text-gray-600 text-base">Mbetjet menaxhohen sipas standardeve, me kontrata të licencuara. Zero ndotje mjedisore direkte.</p>
+            <div className="commitment-grid">
+                
+                {/* Kartat tani kanë ngjyrë të bardhë të pastër brenda sfondit të hirtë */}
+                <div className="commitment-card">
+                    <Globe size={40} className="text-orange-600 mx-auto mb-3" />
+                    <h4 className="font-bold text-xl mb-2 text-stone-800">Mjedis dhe Mbetje</h4>
+                    <p className="text-gray-600 text-base">Mbetjet menaxhohen sipas standardeve, me kontrata të licencuara. Zero ndotje mjedisore direkte.</p>
+                </div>
+                
+                <div className="commitment-card">
+                    <Users size={40} className="text-orange-600 mx-auto mb-3" />
+                    <h4 className="font-bold text-xl mb-2 text-stone-800">Siguria dhe Punësimi</h4>
+                    <p className="text-gray-600 text-base">Përdorim ventilim dhe izolim akustik. Punëdhënës me të drejta të plota sociale dhe kontrata të rregullta.</p>
+                </div>
+                
+                <div className="commitment-card">
+                    <Zap size={40} className="text-orange-600 mx-auto mb-3" />
+                    <h4 className="font-bold text-xl mb-2 text-stone-800">Efikasiteti i Procesit</h4>
+                    <p className="text-gray-600 text-base">Përdorimi i sistemit të përpunimit aktiv (AP) për të optimizuar kostot dhe kohën e import-eksportit të materialeve.</p>
+                </div>
             </div>
-            
-            <div className="commitment-card">
-                <Users size={40} className="text-orange-600 mx-auto mb-3" />
-                <h4 className="font-bold text-xl mb-2 text-stone-800">Siguria dhe Punësimi</h4>
-                <p className="text-gray-600 text-base">Përdorim ventilim dhe izolim akustik. Punëdhënës me të drejta të plota sociale dhe kontrata të rregullta.</p>
-            </div>
-            
-            <div className="commitment-card">
-                <Zap size={40} className="text-orange-600 mx-auto mb-3" />
-                <h4 className="font-bold text-xl mb-2 text-stone-800">Efikasiteti i Procesit</h4>
-                <p className="text-gray-600 text-base">Përdorimi i sistemit të përpunimit aktiv (AP) për të optimizuar kostot dhe kohën e import-eksportit të materialeve.</p>
-            </div>
+
         </div>
-
       </div>
       
     </div>
