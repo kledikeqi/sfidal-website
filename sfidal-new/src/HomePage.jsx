@@ -1,10 +1,10 @@
 import React from 'react';
 import './Sfidal.scss'; 
-import QualitySection from './QualitySection'; // Nuk përdoret, por e lëmë siç ishte
 import { Link } from 'react-router-dom';
 
 // Imazhi Placeholder (për të simuluar këpucën e shabllonit)
-const SfidalHeroImage = "./images/sfidal-hero.jpg";
+// Kujdes: Sigurohuni që rruga "./images/sfidal-hero.jpg" të jetë e saktë
+const SfidalHeroImage = "./images/sfidal-hero.jpg"; 
 
 // Komponenti i Ikonës SVG (Për procesin)
 const IconSvg = ({ children }) => (
@@ -32,7 +32,6 @@ function HomePage() {
             to="/partneritet" 
             className="hero-cta-icon" 
           >
-            {/* Fiks: Fshijmë span-in bosh dhe e lëmë vetëm tekstin e butonit */}
             DISKUTONI PARTNERITETIN
           </Link>
         </div>
@@ -102,9 +101,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Nëse dëshironi të shfaqni seksionin e cilësisë, e thërrisni këtu: 
-      <QualitySection /> */}
-
+      {/* Nëse dëshironi të shfaqni seksionin e cilësisë, thërrisni <QualitySection /> në App.js */}
     </main>
   );
 }
