@@ -702,3 +702,155 @@ a:hover {
         margin-right: auto;
     }
 }
+
+// ------------------------------------------------------------------
+// --- STILE TË VEÇANTA PËR PAGESAT (Services, Quality, Partnership) ---
+// ------------------------------------------------------------------
+
+// Përfaqëson seksionin e Kartave të Shërbimeve (ServicesPage.jsx)
+.services-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 Kolona në Desktop */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+// Stili i Kartës së Shërbimeve
+.service-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* Kartat me lartësi të barabartë */
+}
+
+.service-card-header {
+    padding: 1.5rem;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.service-card-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+.service-card-header .icon-container {
+    padding: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.service-card-body {
+    padding: 1.5rem;
+    flex-grow: 1; /* Përdor hapësirën e mbetur */
+}
+
+.service-card-body ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+.service-card-body ul li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+// Ngjyrat e kartave (në vend të klasave inline)
+.orange-theme { background-color: $accent-orange; color: $text-light !important; }
+.orange-theme h3 { color: $text-light !important; }
+.dark-theme { background-color: $primary-dark; color: $text-light !important; }
+.dark-theme h3 { color: $text-light !important; }
+.orange-theme .icon-container { background-color: rgba(255, 255, 255, 0.2); }
+.dark-theme .icon-container { background-color: rgba(255, 255, 255, 0.1); }
+.service-card-body .text-gray-700 { color: #444; }
+
+
+// Seksioni i Përgjegjshmërisë (ServicesPage.jsx)
+.commitment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Kolona në Desktop */
+    gap: 30px;
+    text-align: center;
+}
+.commitment-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-top: 4px solid $accent-orange;
+    transition: transform 0.3s;
+}
+.commitment-card:hover {
+    transform: translateY(-5px);
+}
+.commitment-card h4 {
+    color: $primary-dark;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+
+// Seksioni i Kontrollit të Cilësisë (QualitySection.jsx)
+.qc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Kolona në Desktop */
+    gap: 30px;
+    text-align: center;
+}
+.qc-grid .card-style-new {
+    border-bottom: 5px solid $accent-orange;
+}
+.ethical-commitment-section {
+    padding: 2.5rem;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.ethical-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 Kolona në Desktop */
+    gap: 40px;
+    text-align: left;
+}
+.ethical-grid h4 {
+    font-weight: 800;
+}
+.ethical-grid ul {
+    margin-top: 10px;
+}
+.ethical-grid ul li {
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+
+// --- MEDIA QUERIES SHTESË PËR KËTO FAQE ---
+@media (max-width: 992px) {
+    /* Shërbimet (ServicesPage) */
+    .services-grid-wrapper, 
+    .commitment-grid, 
+    .qc-grid,
+    .ethical-grid {
+        grid-template-columns: 1fr; /* Kolonë e Vetme në Mobile */
+        gap: 25px;
+    }
+    
+    .service-card-header {
+        text-align: left;
+    }
+    .commitment-card {
+        text-align: left;
+    }
+    .qc-grid .card-style-new {
+        text-align: left;
+    }
+    
+    .ethical-commitment-section {
+        padding: 1.5rem;
+    }
+}

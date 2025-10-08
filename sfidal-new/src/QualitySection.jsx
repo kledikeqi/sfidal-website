@@ -5,7 +5,7 @@ import { Shield, Factory, Users, CheckCircle, Leaf, Handshake } from 'lucide-rea
 const QualitySection = () => {
     // Përdorim klasën SCSS 'page-padding'
     return (
-        <div className="page-padding min-h-screen px-4 sm:px-8 lg:px-12 bg-gray-50 font-sans">
+        <div className="page-padding min-h-screen font-sans px-4">
             
             {/* Headeri dhe Përshkrimi i Qendërzuar */}
             <header className="max-w-4xl mx-auto text-center mb-16">
@@ -19,28 +19,27 @@ const QualitySection = () => {
                 </p>
             </header>
 
-            {/* Seksioni 1: Kontrolli i Procesit - Kartat e Dizenjuara dhe Të Qendërzuara */}
+            {/* Seksioni 1: Kontrolli i Procesit - Tani me klasën e re SCSS */}
             <div className="max-w-6xl mx-auto mb-16">
                 
-                {/* NDRYSHIMI KRYESOR: Titulli i seksionit (h3) qendërzohet këtu */}
                 <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center border-b-2 border-orange-600/50 pb-2">Kontrolli i Cilësisë në Çdo Fazë</h3>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="qc-grid"> 
                     
-                    {/* Kartat tani kanë text-center */}
-                    <div className="card-style-new text-center"> 
+                    {/* Kartat tani kanë stilin e ri SCSS */}
+                    <div className="card-style-new"> 
                         <CheckCircle size={40} className="text-orange-600 mx-auto mb-3" />
                         <h4 className="font-semibold text-xl mb-2 text-gray-900">QC në Hyrje (Input QC)</h4>
                         <p className="text-gray-600 text-base">Verifikimi i lëkurës dhe materialeve kundrejt specifikave të klientit. Asnjë material i pacertifikuar nuk kalon në prodhim.</p>
                     </div>
 
-                    <div className="card-style-new text-center">
+                    <div className="card-style-new">
                         <Factory size={40} className="text-orange-600 mx-auto mb-3" />
                         <h4 className="font-semibold text-xl mb-2 text-gray-900">QC në Proces (In-Process QC)</h4>
                         <p className="text-gray-600 text-base">Inspektimi i rregullt i të gjitha fazave: prerja, qepja dhe montimi. Zbatim i saktë i skedave teknike.</p>
                     </div>
                     
-                    <div className="card-style-new text-center">
+                    <div className="card-style-new">
                         <Handshake size={40} className="text-orange-600 mx-auto mb-3" />
                         <h4 className="font-semibold text-xl mb-2 text-gray-900">QC Final dhe Eksport</h4>
                         <p className="text-gray-600 text-base">Kontrolli i fundit i 100% të produktit të gatshëm (etiketimi, ambalazhimi) përpara ngarkimit për eksport.</p>
@@ -48,13 +47,13 @@ const QualitySection = () => {
                 </div>
             </div>
 
-            {/* Seksioni 2: Përgjegjshmëria Etike dhe Mjedisore (Tani Qendërzohet) */}
-            <div className="max-w-5xl mx-auto p-10 rounded-xl bg-white shadow-xl">
+            {/* Seksioni 2: Përgjegjshmëria Etike dhe Mjedisore */}
+            <div className="max-w-5xl mx-auto ethical-commitment-section">
                 <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center border-b-2 border-gray-400/50 pb-2">Përgjegjshmëria Etike dhe Mjedisore</h3>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="ethical-grid"> 
                     
-                    {/* Heqim klasat e qendërzimit tek lista që teksti të jetë i lexueshëm */}
+                    {/* Kolona 1: Mjedisi */}
                     <div>
                         <Leaf size={32} className="text-orange-600 mb-3" />
                         <h4 className="font-extrabold text-xl mb-3 text-gray-900">Menaxhimi Mjedisor</h4>
@@ -65,6 +64,7 @@ const QualitySection = () => {
                         </ul>
                     </div>
 
+                    {/* Kolona 2: Etika */}
                     <div>
                         <Users size={32} className="text-orange-600 mb-3" />
                         <h4 className="font-extrabold text-xl mb-3 text-gray-900">Etika e Punës dhe Siguria</h4>

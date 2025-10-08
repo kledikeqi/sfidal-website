@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// Shtojmë lucide-react për ikona, nëse i keni përdorur në pjesë të tjera
-// import { Factory, Briefcase, Mail } from 'lucide-react'; 
 
 // URL-ja e API-së së Backend-it (tani duke përdorur portën 5001)
 const API_URL = '/api/partneritet';
 
-// Komponenti i thjeshtë i formularit, i përditësuar për API
+// Komponenti i thjeshtë i formularit
 function SimpleContactForm() {
-  // Përdorim emrat e fushave që përputhen me Modelin tuaj Mongoose (companyName, contactPerson, email, message)
   const [formData, setFormData] = useState({
-    contactPerson: '', // Më parë 'name'
+    contactPerson: '', 
     email: '',
-    companyName: '', // Më parë 'company'
+    companyName: '', 
     message: '',
-    requestType: 'NewProduction' // Shtojmë default, por mund të bëhet i zgjedhshëm
+    requestType: 'NewProduction' 
   });
   
   const [status, setStatus] = useState({ loading: false, success: null, message: '' });
@@ -28,18 +25,15 @@ function SimpleContactForm() {
     e.preventDefault();
     if (status.loading) return;
 
-    // Krijojmë një kopje të të dhënave dhe i rregullojmë emrat e fushave 
-    // (psh. name -> contactPerson, company -> companyName)
     const dataToSend = {
       contactPerson: formData.contactPerson,
       email: formData.email,
       companyName: formData.companyName,
       message: formData.message,
-      requestType: formData.requestType, // Ose e shtojmë si input nëse keni nevojë për zgjedhje
-      phone: '' // E lëmë bosh nëse nuk është fushë në këtë formë
+      requestType: formData.requestType, 
+      phone: '' 
     };
 
-    // Validim minimal
     if (!dataToSend.contactPerson || !dataToSend.email || !dataToSend.companyName || !dataToSend.message) {
       setStatus({ loading: false, success: false, message: 'Ju lutem plotësoni të gjitha fushat e detyrueshme (*).' });
       return;
@@ -59,12 +53,9 @@ function SimpleContactForm() {
       const data = await response.json();
 
       if (response.ok) {
-        // Suksesi
         setStatus({ loading: false, success: true, message: '✅ Kërkesa u dërgua! Do t\'ju kontaktojmë së shpejti.' });
-        // Pastrimi
         setFormData({ contactPerson: '', email: '', companyName: '', message: '', requestType: 'NewProduction' }); 
       } else {
-        // Gabim nga Backend (p.sh., Validimi Mongoose)
         setStatus({ loading: false, success: false, message: `❌ Dështoi: ${data.error || 'Gabim i panjohur.'}` });
       }
     } catch (error) {
@@ -78,6 +69,7 @@ function SimpleContactForm() {
   };
 
   if (status.success === true) {
+    // Përdorim klasën SCSS card-style-new
     return (
       <div className="card-style-new" style={{ textAlign: 'center', backgroundColor: '#e9f8e9', color: '#1a1a1a' }}>
         <h3 style={{color: '#1a1a1a'}}>Faleminderit! Kërkesa u Dërgua me Sukses.</h3>
@@ -100,7 +92,7 @@ function SimpleContactForm() {
         <input 
           type="text" 
           id="contactPerson" 
-          name="contactPerson" // NDRYSHUAR
+          name="contactPerson" 
           className="form-control" 
           value={formData.contactPerson} 
           onChange={handleChange} 
@@ -124,7 +116,7 @@ function SimpleContactForm() {
         <input 
           type="text" 
           id="companyName" 
-          name="companyName" // NDRYSHUAR
+          name="companyName" 
           className="form-control" 
           value={formData.companyName} 
           onChange={handleChange} 
@@ -160,7 +152,8 @@ function PartnershipFormPage() {
     // Përdorim contact-form-container për stilizimin e përgjithshëm të faqes
     <section className="contact-form-container">
       
-      <div className="form-page-wrapper">
+      {/* Kjo klasë tashmë është rregulluar në SCSS për të funksionuar si kolona e vetme në mobile */}
+      <div className="form-page-wrapper"> 
         
         {/* Kolona 1: Hyrja dhe Titulli */}
         <div className="form-intro-content">
