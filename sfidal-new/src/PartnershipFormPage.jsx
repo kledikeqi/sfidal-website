@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, Building, MessageSquare, ArrowLeft } from 'lucide-react'; 
+import { Mail, Phone, Building, MessageSquare, ArrowLeft, Loader, ShieldCheck } from 'lucide-react';
+
+// VËREJTJE E RËNDËSISHME: ZËVENDËSONI KËTË ME URL-NË TUAJ TË FORMULARI NGA FORMSPREE!
+// Pasi të regjistroheni në Formspree, vendosni URL-në tuaj unike këtu.
+const FORM_ENDPOINT = "https://formspree.io/f/meorlvar";
 
 const PartnershipPage = () => {
     // Shteti i formularit
@@ -13,6 +17,8 @@ const PartnershipPage = () => {
         message: ''
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false); // Shtuar për butonin e dërgimit
+    const [error, setError] = useState(null); // Shtuar për trajtimin e gabimeve
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -22,22 +28,46 @@ const PartnershipPage = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        // Këtu do të bëhej logjika e dërgimit të të dhënave (p.sh., me API)
-        console.log("Forma u dërgua me të dhënat:", formData);
+        setIsLoading(true); // Fillon ngarkimi
+        setError(null);
 
-        // Simulojmë dërgimin e suksesshëm
-        setIsSubmitted(true);
-        // Këtu mund të shtohet logjika e pastrimit të formës nëse dëshirohet
+        // Kjo është logjika REALE e dërgimit në Formspree
+        try {
+            const response = await fetch(FORM_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                // Nëse dërgimi është i suksesshëm
+                setIsSubmitted(true);
+                // Pastrimi i formës pas suksesit
+                setFormData({ name: '', company: '', email: '', phone: '', capacity: '', message: '' }); 
+            } else {
+                // Trajtimi i gabimeve nga Formspree
+                const data = await response.json();
+                setError(data.error || "Ndodhi një gabim gjatë dërgimit. Provoni përsëri.");
+            }
+        } catch (err) {
+            // Trajtimi i gabimeve të rrjetit (p.sh., URL e gabuar Formspree, ose mungesë interneti)
+            setError("Nuk mund të lidheshim me serverin. Kontrolloni URL-në Formspree ose lidhjen tuaj.");
+            console.error("Network Error:", err);
+        } finally {
+            setIsLoading(false); // Përfundon ngarkimi
+        }
     };
 
     // Stili i rregulluar dhe i përmirësuar për fushën Input
     const inputClasses = "w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition duration-150 shadow-sm";
     
     // Stili i ri i butonit CTA, i trashëguar nga SCSS, por me w-full këtu
-    const submitButtonClasses = "w-full cta-button mt-4 justify-center flex items-center";
+    const submitButtonClasses = "w-full cta-button mt-4 justify-center flex items-center disabled:opacity-50 disabled:cursor-not-allowed";
+
 
     if (isSubmitted) {
         return (
@@ -59,7 +89,7 @@ const PartnershipPage = () => {
     return (
         <div className="page-padding min-h-screen bg-white font-sans">
             
-            {/* Wrapper Qendërzues i Formës - Rregullon ngjeshjen dhe qendërzon */}
+            {/* Wrapper Qendërzues i Formës */}
             <div className="max-w-xl mx-auto px-4 py-8 md:py-16">
                 <h1 className="text-4xl md:text-5xl font-extrabold text-stone-800 text-center mb-4">
                     Kërkesë për Partneritet Fason
@@ -71,7 +101,15 @@ const PartnershipPage = () => {
                 {/* Forma e Kontaktit - Përdor Grid për Layout të Organizuar */}
                 <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-6 sm:p-8 rounded-xl shadow-lg border border-gray-100">
                     
-                    {/* Emri dhe Kompania (Në një rresht në desktop, në kolonë në celular) */}
+                    {/* Mesazhi i Gabimit */}
+                    {error && (
+                        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <strong className="font-bold">Gabim: </strong>
+                            <span className="block sm:inline">{error}</span>
+                        </div>
+                    )}
+
+                    {/* Emri dhe Kompania */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label htmlFor="name" className="input-label">Emri i Plotë</label>
@@ -108,7 +146,7 @@ const PartnershipPage = () => {
                         </div>
                     </div>
 
-                    {/* Email dhe Telefoni (Në një rresht në desktop, në kolonë në celular) */}
+                    {/* Email dhe Telefoni */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label htmlFor="email" className="input-label">Adresa E-mail</label>
@@ -182,8 +220,18 @@ const PartnershipPage = () => {
                     </div>
 
                     {/* Butoni i Dërgimit */}
-                    <button type="submit" className={submitButtonClasses}>
-                        Dërgo Kërkesën
+                    <button 
+                        type="submit" 
+                        className={submitButtonClasses}
+                        disabled={isLoading} // E çaktivizon butonin gjatë ngarkimit
+                    >
+                        {isLoading ? (
+                            <>
+                                <Loader size={20} className="animate-spin mr-2" /> Duke Dërguar...
+                            </>
+                        ) : (
+                            "Dërgo Kërkesën"
+                        )}
                     </button>
                 </form>
                 
@@ -199,19 +247,11 @@ const PartnershipPage = () => {
     );
 }
 
-// Komponenti User është i nevojshëm për funksionalitetin e ikonave
+// Komponentet e nevojshme të ikonave
 const User = (props) => (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
         <circle cx="12" cy="7" r="4" />
-    </svg>
-);
-
-// Komponenti ShieldCheck është i nevojshëm për funksionalitetin e ikonave
-const ShieldCheck = (props) => (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="M9 12l2 2 4-4" />
     </svg>
 );
 
