@@ -1,15 +1,20 @@
-// 1. Importimi i Librarive Themelore
+// 1. Importimi i Librarive Themelore dhe shtesat për 'type: module'
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import path from 'path';
+import { fileURLToPath } from 'url'; // SHTESA E RE: Për të rregulluar __dirname
 
 // Importimi i Rrugëve dhe Middleware
 import partnershipRoutes from './routes/partnership.js';
 import userRoutes from './routes/userRoutes.js'; 
 // Importimi i Error Handler
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+
+// PËRCAKTIMI I __dirname për 'type: module' (Ky është thelbësor!)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Konfiguro dotenv për të ngarkuar variablat e mjedisit nga .env
 dotenv.config();
@@ -42,27 +47,32 @@ app.use('/api/partneritet', partnershipRoutes);
 app.use('/api/users', userRoutes); 
 
 // 7. ⚠️ KONFIGURIMI I VENDOSJES (DEPLOYMENT LOGIC)
-// Përdorim path.resolve() për të siguruar shtegun e saktë në të gjitha sistemet
-const __dirname = path.resolve();
+// Kemi përcaktuar __dirname më lart, nuk ka nevojë për path.resolve() shtesë.
 
 if (process.env.NODE_ENV === 'production') {
     
+    // Rruga për në folderin 'build' të React-it.
+    // Nga src/server shkojmë dy hapa prapa te sfidal-new dhe hyjmë te build.
+    const buildPath = path.join(__dirname, '..', '..', 'build');
+
     // A. Cakto folderin e ndërtuar (build) si folder statik
-    // 'sfidal-new' është folderi i React-it, ku krijohet 'build'
-    app.use(express.static(path.join(__dirname, '/sfidal-new/build')));
+    app.use(express.static(buildPath));
 
     // B. Për çdo rrugë GET që nuk është API, kthe index.html
-    // Kjo i lejon React Router të marrë kontrollin
-    app.get('*', (req, res) =>
-        res.sendFile(path.resolve(__dirname, 'sfidal-new', 'build', 'index.html'))
-    );
+    // Kjo i lejon React Router të marrë kontrollin.
+    // FIXI KRYESOR: Përdorim app.get('/*', ...) për të shmangur gabimin e PathError
+    app.get('/*', (req, res) => {
+        res.sendFile(path.resolve(buildPath, 'index.html'));
+    });
+
 } else {
-    // ⚠️ Modaliteti i Zhvillimit: Shërbe mesazh të thjeshtë
+    // Modaliteti i Zhvillimit
     app.get('/', (req, res) => {
         res.send('Sfidal API Server - Running në modalitetin Zhvillim');
     });
 }
 // ⚠️ FUNDI I LOGJIKËS SË DEPLOYMENT
+
 app.use(notFound); // Kap rrugët që nuk ekzistojnë
 app.use(errorHandler); // Trajton të gjitha gabimet
 
