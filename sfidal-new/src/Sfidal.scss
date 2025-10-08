@@ -1,4 +1,4 @@
-@import url('https://www.google.com/search?q=https://fonts.googleapis.com/css2%3Ffamily%3DInter:wght%40400%3B600%3B700%3B800%3B900%26display%3Dswap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
 // --- TEMA E RE ME BAZË TE SHABLLONI SNEAKER ---
 $primary-dark: #1a1a1a; // Pothuajse e zezë, si në shabllon
@@ -11,17 +11,18 @@ $font-stack: 'Inter', sans-serif;
 
 // --- RESET & TYPOGRAPHY ---
 body {
-font-family: $font-stack;
-color: $text-dark;
-margin: 0;
-padding: 0;
-background-color: #ffffff;
-overflow-x: hidden;
+    font-family: $font-stack;
+    color: $text-dark;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    transition: background-color 0.3s; /* Shtuar për dinamizëm */
 }
 
 h1, h2, h3, h4 {
-color: $primary-dark;
-font-weight: 900;
+    color: $primary-dark;
+    font-weight: 900;
 }
 
 h1 { font-size: clamp(2.8rem, 7vw, 5rem); } // Më i madh, si në shabllon
@@ -29,599 +30,675 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); text-align: center; margin-bottom: 2.5re
 h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 
 p {
-font-size: 1.05rem;
-line-height: 1.7;
-color: #666; // Ngjyrë më e hapur se teksti kryesor
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #666; // Ngjyrë më e hapur se teksti kryesor
 }
 
 a {
-text-decoration: none;
-color: $primary-dark;
-transition: color 0.3s;
+    text-decoration: none;
+    color: $primary-dark;
+    transition: color 0.3s;
 }
 
 a:hover {
-color: $accent-orange;
+    color: $accent-orange;
 }
 
 // --- GLOBAL UTILITIES ---
 .page-padding {
-padding-top: 120px !important;
-padding-bottom: 5rem !important;
+    padding-top: 120px !important;
+    padding-bottom: 5rem !important;
 }
 
 .cta-button {
-padding: 1rem 3rem;
-border-radius: 6px;
-font-weight: 700;
-letter-spacing: 0.5px;
-text-transform: uppercase;
-transition: all 0.3s ease;
-box-shadow: 0 4px 10px rgba($accent-orange, 0.2);
-background-color: $accent-orange; // Butoni portokalli
-color: $text-light !important;
+    padding: 1rem 3rem;
+    border-radius: 6px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba($accent-orange, 0.2);
+    background-color: $accent-orange; // Butoni portokalli
+    color: $text-light !important;
 }
 
 .cta-button:hover {
-background-color: $soft-orange;
-box-shadow: 0 6px 15px rgba($accent-orange, 0.4);
+    background-color: $soft-orange;
+    box-shadow: 0 6px 15px rgba($accent-orange, 0.4);
 }
 
 .back-button {
-margin-top: 3rem;
-display: block;
-width: fit-content;
-margin-left: auto;
-margin-right: auto;
-background-color: transparent !important;
-border: 2px solid $accent-orange;
-color: $accent-orange !important;
+    margin-top: 3rem;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: transparent !important;
+    border: 2px solid $accent-orange;
+    color: $accent-orange !important;
 }
 
 .back-button:hover {
-background-color: $accent-orange !important;
-color: $text-light !important;
-box-shadow: 0 6px 15px rgba($accent-orange, 0.4);
+    background-color: $accent-orange !important;
+    color: $text-light !important;
+    box-shadow: 0 6px 15px rgba($accent-orange, 0.4);
 }
 
 .card-style-new {
-background-color: #ffffff;
-padding: 3rem;
-border-radius: 10px;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 // --- HEADER STYLES (Minimal dhe Transparent) ---
 .main-header {
-background-color: transparent;
-height: 90px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 0 5vw;
-position: absolute;
-width: 100%;
-top: 0;
-z-index: 1000;
-box-sizing: border-box;
-border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* Shtuar për animacionin e fiksimit */
+}
+
+/* Stili kur Header është 'Scrolled' (për header fiks) */
+.main-header.scrolled {
+    position: fixed;
+    top: 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo-link {
-display: flex;
-align-items: center;
-text-decoration: none;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
 .sfidal-logo { height: 35px; width: auto; }
 
 .company-name {
-margin-left: 10px;
-font-size: 1.2rem;
-font-weight: 900;
-color: $primary-dark;
-letter-spacing: 1px;
-display: block;
+    margin-left: 10px;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: $primary-dark;
+    letter-spacing: 1px;
+    display: block;
 }
 
 .main-nav {
-display: flex; /* E bëjmë fleksibël për të allinjuar elementet /
-align-items: center; / Allinjimi vertikal */
+    display: flex; /* E bëjmë fleksibël për të allinjuar elementet */
+    align-items: center; /* Allinjimi vertikal */
 }
 
 .main-nav a {
-color: $text-dark;
-font-weight: 600;
-margin-left: 30px;
-padding: 5px 0;
-transition: all 0.3s ease;
-text-transform: uppercase;
-font-size: 0.95rem;
-white-space: nowrap; /* Siguron që tekstet e lidhjeve të mos thyhen */
+    color: $text-dark;
+    font-weight: 600;
+    margin-left: 30px;
+    padding: 5px 0;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    white-space: nowrap; /* Siguron që tekstet e lidhjeve të mos thyhen */
 }
 
 .main-nav a:hover { color: $accent-orange; }
 
 .nav-cta {
-background-color: $accent-orange;
-color: white !important;
-padding: 8px 15px;
-border-radius: 6px;
-margin-left: 30px; /* Shton një ndarje të qartë midis navigimit dhe butonit */
-display: block;
+    background-color: $accent-orange;
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 6px;
+    margin-left: 30px; /* Shton një ndarje të qartë midis navigimit dhe butonit */
+    display: block;
 }
 
-//  Stilimi i Ikonës së Menysë (Hamburger) /
+/* Stilimi i Ikonës së Menysë (Hamburger) */
 .menu-toggle {
-display: none; // Fshehur në desktop */
-cursor: pointer;
-border: none;
-background: transparent;
-padding: 10px;
-z-index: 1100;
+    display: none; // Fshehur në desktop */
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    z-index: 1100;
 }
 .menu-toggle svg {
-color: $primary-dark;
-width: 28px;
-height: 28px;
+    color: $primary-dark;
+    width: 28px;
+    height: 28px;
 }
+
+// --- STILIMI I MENYSË MOBILE (OVERLAY) ---
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $primary-dark; 
+    z-index: 1050; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Animacioni: E fshehim jashtë shikimit me opacity dhe transform */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.mobile-menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.mobile-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+.mobile-nav-links li {
+    margin: 30px 0;
+}
+.mobile-nav-links a {
+    color: $text-light;
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    padding: 10px 0;
+    transition: color 0.3s;
+}
+
+.mobile-nav-links a:hover {
+    color: $accent-orange;
+}
+
+.mobile-nav-links .nav-cta {
+    background-color: $accent-orange;
+    color: $text-light !important;
+    padding: 15px 40px;
+    margin-top: 20px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
 
 // --- HERO SECTION STYLES (EKZAKT SI SHABLLONI) ---
 .hero-wrapper {
-min-height: 100vh;
-display: grid;
-grid-template-columns: 1fr 1fr;
-align-items: center;
-padding-top: 90px;
-background-color: #ffffff;
-position: relative;
-overflow: hidden;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding-top: 90px;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-left {
-padding-left: 10vw; // Më shumë padding si në shabllon
-padding-right: 5vw;
-z-index: 2;
+    padding-left: 10vw; // Më shumë padding si në shabllon
+    padding-right: 5vw;
+    z-index: 2;
 }
 
 .hero-left h1 {
-margin-top: 0;
-margin-bottom: 20px;
-line-height: 1.1;
-font-weight: 900;
-text-transform: none;
+    margin-top: 0;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    font-weight: 900;
+    text-transform: none;
 }
 
 .hero-left p {
-font-size: 1rem;
-line-height: 1.7;
-color: #666;
-max-width: 450px;
-margin-bottom: 40px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #666;
+    max-width: 450px;
+    margin-bottom: 40px;
 }
 
 .hero-right {
-position: relative;
-height: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .diagonal-bg {
-position: absolute;
-top: 0;
-right: 0;
-bottom: 0;
-left: 0;
-background: linear-gradient(135deg, $soft-orange 0%, $accent-orange 100%);
-/* Krijon ndarjen diagonale si në shabllon (fillon 50% nga e majta) */
-clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%);
-z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(135deg, $soft-orange 0%, $accent-orange 100%);
+    /* Krijon ndarjen diagonale si në shabllon (fillon 50% nga e majta) */
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%);
+    z-index: 1;
 }
 
 .hero-image {
-width: 100%;
-max-width: 600px;
-height: auto;
-z-index: 2;
-transform: translateX(10%); // Spostojmë imazhin pak në të djathtë
-object-fit: contain;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    z-index: 2;
+    transform: translateX(10%); // Spostojmë imazhin pak në të djathtë
+    object-fit: contain;
 }
 
 // Stili i ri për butonin "Diskutoni Partneritetin" (brenda seksionit Hero)
 .hero-cta-icon {
-display: inline-flex;
-align-items: center;
-background-color: $accent-orange; // Tani e bëjmë portokalli si parazgjedhje
-color: white !important;
-padding: 15px 30px; /* Më i madh se butoni i navigimit /
-border-radius: 6px; / Bëjmë këndet katrore, jo të rrumbullakta */
-font-weight: 700;
-transition: all 0.3s;
-margin-top: 10px;
-box-shadow: 0 4px 15px rgba($accent-orange, 0.3);
-text-transform: uppercase;
-font-size: 0.95rem; /* E bëjmë si tekstet e navigimit */
-border: none;
+    display: inline-flex;
+    align-items: center;
+    background-color: $accent-orange; // Tani e bëjmë portokalli si parazgjedhje
+    color: white !important;
+    padding: 15px 30px; /* Më i madh se butoni i navigimit */
+    border-radius: 6px; 
+    font-weight: 700;
+    transition: all 0.3s;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba($accent-orange, 0.3);
+    text-transform: uppercase;
+    font-size: 0.95rem; 
+    border: none;
 }
 .hero-cta-icon:hover {
-background-color: $soft-orange;
-color: white !important;
+    background-color: $soft-orange;
+    color: white !important;
 }
-// Heqim stilin e ikonës së vogël brenda butonit, duke e bërë më shumë si 'Kontaktoni'
 .hero-cta-icon span {
-display: none;
+    display: none;
 }
 
 // --- PROCESS SECTION ---
 .process-section {
-background-color: #ffffff; // I bardhë
-padding: 6rem 5vw;
+    background-color: #ffffff; // I bardhë
+    padding: 6rem 5vw;
 }
 
 .process-grid {
-display: flex;
-justify-content: center;
-max-width: 1200px;
-margin: 0 auto;
-gap: 2rem;
-flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .process-step {
-flex: 1 1 300px;
-padding: 2.5rem;
-border-radius: 8px;
-background-color: $bg-light;
-border-left: 5px solid $accent-orange;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 300px;
+    padding: 2.5rem;
+    border-radius: 8px;
+    background-color: $bg-light;
+    border-left: 5px solid $accent-orange;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .process-step:hover {
-transform: translateY(-5px);
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .step-number {
-font-size: 3rem;
-font-weight: 900;
-color: $accent-orange;
-margin-bottom: 1rem;
-display: block;
+    font-size: 3rem;
+    font-weight: 900;
+    color: $accent-orange;
+    margin-bottom: 1rem;
+    display: block;
 }
 
 .process-step p {
-color: #666;
-line-height: 1.6;
+    color: #666;
+    line-height: 1.6;
 }
 
 // --- QUALITY SECTION STYLES ---
 .quality-section {
-background-color: $bg-light;
-padding: 6rem 5vw;
-text-align: center;
+    background-color: $bg-light;
+    padding: 6rem 5vw;
+    text-align: center;
 }
 
 .quality-section h2 {
-color: $primary-dark;
+    color: $primary-dark;
 }
 
 .features-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 30px;
-max-width: 1200px;
-margin: 0 auto;
-margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 3rem;
 }
 
 .feature-card {
-background-color: #ffffff;
-padding: 2.5rem;
-border-radius: 8px;
-text-align: left;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-border-bottom: 5px solid $accent-orange;
-transition: transform 0.3s ease;
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border-bottom: 5px solid $accent-orange;
+    transition: transform 0.3s ease;
 }
 
 .feature-card:hover {
-transform: translateY(-3px);
+    transform: translateY(-3px);
 }
 
 .icon-badge {
-font-size: 2.5rem;
-display: inline-block;
-color: $accent-orange;
+    font-size: 2.5rem;
+    display: inline-block;
+    color: $accent-orange;
 }
 
 // --- ABOUT PAGE & DETAILED CONTACT STYLES ---
 .about-page-section, .contact-page-section, .contact-form-container {
-min-height: 80vh;
-padding: 5rem 5vw;
-background-color: $bg-light;
-text-align: left;
+    min-height: 80vh;
+    padding: 5rem 5vw;
+    background-color: $bg-light;
+    text-align: left;
 }
 
 .about-title, .contact-page-section h1 {
-font-size: 3rem;
-color: $primary-dark;
-margin-bottom: 2rem;
-text-align: center;
+    font-size: 3rem;
+    color: $primary-dark;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 .about-intro, .contact-intro {
-font-size: 1.2rem;
-color: #444;
-max-width: 900px;
-margin: 0 auto 3rem auto;
-text-align: center;
-}
-
-.card-style-new {
-border: none;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    font-size: 1.2rem;
+    color: #444;
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+    text-align: center;
 }
 
 /* Seksioni i Hartës */
 .location-details-grid {
-display: grid;
-grid-template-columns: 1fr 2fr;
-gap: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
 }
 
 .map-container {
-border: 3px solid $accent-orange;
-border-radius: 8px;
-overflow: hidden;
-height: 450px;
+    border: 3px solid $accent-orange;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 450px;
 }
 
 .map-overlay {
-background-color: rgba($accent-orange, 0.8);
-color: $text-light;
+    background-color: rgba($accent-orange, 0.8);
+    color: $text-light;
 }
 
 /* Stili i Kontaktit të Detajuar */
 .contact-details-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 30px;
-margin-top: 2rem;
-text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 2rem;
+    text-align: center;
 }
 
 .contact-item {
-border-bottom: 5px solid $accent-orange;
+    border-bottom: 5px solid $accent-orange;
 }
 
 // --- PARTNERSHIP FORM PAGE STYLES (STILE TË RINJ DINAMIKE) ---
 .contact-form-container {
-min-height: 90vh; /* E bëjmë më të lartë /
-padding: 6rem 5vw;
-background-color: #ffffff;
-display: flex; / Për ndarje me dy kolona */
-align-items: center;
-justify-content: center;
+    min-height: 90vh; /* E bëjmë më të lartë */
+    padding: 6rem 5vw;
+    background-color: #ffffff;
+    display: flex; /* Për ndarje me dy kolona */
+    align-items: center;
+    justify-content: center;
 }
 
 .form-page-wrapper {
-max-width: 1200px;
-margin: 0 auto;
-display: grid;
-grid-template-columns: 1fr 1fr; /* Ndarje në dy kolona /
-gap: 4rem;
-align-items: center;
-text-align: left; / Të gjitha elementet allinjohen në të majtë */
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Ndarje në dy kolona */
+    gap: 4rem;
+    align-items: center;
+    text-align: left; /* Të gjitha elementet allinjohen në të majtë */
 }
 
 .form-intro-content {
-padding-right: 2rem;
+    padding-right: 2rem;
 }
 
 .page-title {
-font-size: clamp(2.5rem, 5vw, 4rem) !important;
-color: $primary-dark !important;
-font-weight: 900;
-margin-bottom: 1rem;
-line-height: 1.1;
+    font-size: clamp(2.5rem, 5vw, 4rem) !important;
+    color: $primary-dark !important;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    line-height: 1.1;
 }
 
 .page-intro {
-font-size: 1.1rem;
-color: #444;
-margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 2rem;
 }
 
 .contact-form-wrapper {
-max-width: 100%; /* Merr gjithë hapësirën e kolonës /
-margin: 0;
-text-align: left;
-background-color: $bg-light;
-padding: 2.5rem;
-border-radius: 10px;
-box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); / Hije më e theksuar /
-border-top: 5px solid $accent-orange; / Për të theksuar formularin */
+    max-width: 100%; /* Merr gjithë hapësirën e kolonës */
+    margin: 0;
+    text-align: left;
+    background-color: $bg-light;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Hije më e theksuar */
+    border-top: 5px solid $accent-orange; /* Për të theksuar formularin */
 }
 
 .contact-form label {
-color: $primary-dark;
-font-weight: 600;
+    color: $primary-dark;
+    font-weight: 600;
 }
 
 .contact-form input,
 .contact-form textarea {
-background-color: #ffffff;
-color: $primary-dark;
-border: 1px solid #ddd;
+    background-color: #ffffff;
+    color: $primary-dark;
+    border: 1px solid #ddd;
 }
 .contact-form input:focus,
 .contact-form-wrapper textarea:focus {
-border-color: $accent-orange;
-outline: none;
-box-shadow: 0 0 0 3px rgba($accent-orange, 0.2);
+    border-color: $accent-orange;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($accent-orange, 0.2);
 }
 
 .submit-button {
-width: 100%;
-margin-top: 1rem;
+    width: 100%;
+    margin-top: 1rem;
 }
 
 // --- FOOTER STYLES ---
 .main-footer {
-background-color: $primary-dark; // E zezë
-color: #aaaaaa;
-padding: 3.5rem 5vw; // Më shumë hapësirë
-text-align: left; // Tani allinjohet majtas
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr; // Tre kolona: 1 e gjerë, 2 standarde
-    gap: 3rem;
-}
-
-h4 {
-    color: $text-light; // Titujt e bardhë
-    font-weight: 700;
-    font-size: 1.15rem;
-    margin-bottom: 1.5rem;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 0.75rem;
-}
-
-a {
+    background-color: $primary-dark; // E zezë
     color: #aaaaaa;
-    font-weight: 400;
-    transition: color 0.3s;
-    font-size: 0.95rem;
-}
+    padding: 3.5rem 5vw; // Më shumë hapësirë
+    text-align: left; // Tani allinjohet majtas
 
-a:hover {
-    color: $accent-orange; // Hover me portokalli
-}
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr; // Tre kolona: 1 e gjerë, 2 standarde
+        gap: 3rem;
+    }
 
-.footer-logo {
-    height: 40px;
-    margin-bottom: 1rem;
-    filter: brightness(0) invert(1); // Sigurohuni që logo të jetë e bardhë në sfondin e errët
-}
+    h4 {
+        color: $text-light; // Titujt e bardhë
+        font-weight: 700;
+        font-size: 1.15rem;
+        margin-bottom: 1.5rem;
+    }
 
-.copyright {
-    text-align: center;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.85rem;
-    color: #777;
-}
+    ul {
+        list-style: none;
+        padding: 0;
+    }
 
-}
+    li {
+        margin-bottom: 0.75rem;
+    }
 
-// Stilet për tabletë/celularë
-@media (max-width: 992px) {
-.main-footer .footer-content {
-grid-template-columns: 1fr;
-gap: 2.5rem;
-text-align: center;
-}
-.main-footer h4 {
-text-align: center;
-}
-.main-footer ul {
-text-align: center;
-}
-.main-footer .footer-logo {
-margin-left: auto;
-margin-right: auto;
-}
+    a {
+        color: #aaaaaa;
+        font-weight: 400;
+        transition: color 0.3s;
+        font-size: 0.95rem;
+    }
+
+    a:hover {
+        color: $accent-orange; // Hover me portokalli
+    }
+
+    .footer-logo {
+        height: 40px;
+        margin-bottom: 1rem;
+        filter: brightness(0) invert(1); // Sigurohuni që logo të jetë e bardhë në sfondin e errët
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.85rem;
+        color: #777;
+    }
+
 }
 
 // --- MEDIA QUERIES (PËRGJIGJE) ---
 @media (max-width: 992px) {
-.main-header {
-position: relative;
-height: auto;
-padding: 20px 5vw; /* Rregullojmë padding-un për të qenë konsistent */
-background-color: #ffffff;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
+    /* Fiksimi i Header-it për mobile: Fiks, jo Absolut */
+    .main-header {
+        position: fixed;
+        top: 0;
+        height: auto;
+        padding: 20px 5vw; 
+        background-color: #ffffff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
 
-/* ⚠️ Fiksi Kryesor: Fsheh Menynë e plotë në Mobile /
-.main-nav {
-display: none;
-}
-/ Shfaq Ikonën e Menysë në Mobile */
-.menu-toggle {
-display: block;
-}
+    /* Fiks Kryesor: Fsheh Menynë e plotë (Desktop) në Mobile */
+    .main-nav {
+        display: none;
+    }
+    /* Shfaq Ikonën e Menysë në Mobile */
+    .menu-toggle {
+        display: block;
+    }
+    
+    /* Zgjidhja e problemit të fshehjes së Hero-s pas Header-it */
+    .hero-wrapper {
+        grid-template-columns: 1fr;
+        padding-top: 110px; /* Rregullimi për Header-in e Fiksuar */
+        min-height: auto;
+    }
 
-.hero-wrapper {
-grid-template-columns: 1fr;
-padding-top: 0;
-min-height: auto;
-}
+    .hero-left {
+        order: 2;
+        padding: 50px 5vw;
+        text-align: center;
+    }
 
-.hero-left {
-order: 2;
-padding: 50px 5vw;
-text-align: center;
-}
+    .hero-left h1, .hero-left p {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-.hero-left h1, .hero-left p {
-max-width: 100%;
-margin-left: auto;
-margin-right: auto;
-}
+    .hero-right {
+        order: 1;
+        height: 350px;
+        padding: 0;
+    }
 
-.hero-right {
-order: 1;
-height: 350px;
-padding: 0;
-}
+    .diagonal-bg {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); // Bëhet drejtkëndësh
+    }
 
-.diagonal-bg {
-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); // Bëhet drejtkëndësh
-}
+    .hero-image {
+        width: 80%;
+        transform: translateX(0);
+        max-width: 400px;
+    }
 
-.hero-image {
-width: 80%;
-transform: translateX(0);
-max-width: 400px;
-}
+    .hero-cta-icon {
+        display: block;
+        margin: 20px auto 0 auto;
+        width: fit-content;
+    }
+    
+    // Seksioni i Procesit
+    .process-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
 
-.hero-cta-icon {
-display: block;
-margin: 20px auto 0 auto;
-width: fit-content;
-}
+    .process-step {
+        border-left: 0;
+        border-top: 5px solid $accent-orange;
+        flex: 1 1 auto;
+    }
 
-.location-details-grid {
-grid-template-columns: 1fr;
-gap: 30px;
-}
+    // Kontaktet dhe Harta
+    .location-details-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 
-.map-container {
-height: 300px;
-}
+    .map-container {
+        height: 300px;
+    }
+    
+    // Formularët
+    .form-page-wrapper {
+        grid-template-columns: 1fr; /* Kolonë e vetme */
+        gap: 2rem;
+    }
 
-// Rregullimi i dizajnit të formularit për ekranet e vogla
-.form-page-wrapper {
-grid-template-columns: 1fr; /* Kolonë e vetme */
-}
+    .form-intro-content {
+        padding-right: 0;
+        text-align: center;
+    }
 
-.form-intro-content {
-padding-right: 0;
-text-align: center;
-}
+    // Footer
+    .main-footer .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+    }
+    .main-footer h4 {
+        text-align: center;
+    }
+    .main-footer ul {
+        text-align: center;
+    }
+    .main-footer .footer-logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

@@ -63,7 +63,7 @@ function Header() {
             <span className="company-name">SFIDAL Sh.P.K</span>
         </Link>
         
-        {/* Navigimi Desktop */}
+        {/* Navigimi Desktop (Ky fshihet nga CSS në mobile) */}
         <nav className="main-nav">
           <Link to="/" onClick={closeMenu}>Kreu</Link> 
           <Link to="/rreth-nesh" onClick={closeMenu}>Rreth Nesh</Link> 
@@ -92,6 +92,7 @@ function Header() {
           <li><Link to="/rreth-nesh" onClick={closeMenu}>RRETH NESH</Link></li>
           <li><Link to="/sherbimet" onClick={closeMenu}>SHËRBIMET</Link></li>
           <li><Link to="/cilesia" onClick={closeMenu}>CILËSIA</Link></li>
+          <li><Link to="/partneritet" onClick={closeMenu}>PARTNERITET</Link></li> 
           <li><Link to="/kontakt" className="nav-cta" onClick={closeMenu}>KONTAKTONI</Link></li>
         </ul>
       </div>
