@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, Building, MessageSquare, ArrowLeft, Loader, ShieldCheck } from 'lucide-react';
+// Shtojmë Loader dhe ShieldCheck nëse nuk janë të importuara saktësisht
+import { Mail, Phone, Building, MessageSquare, ArrowLeft, Loader, ShieldCheck } from 'lucide-react'; 
 
-// VËREJTJE E RËNDËSISHME: ZËVENDËSONI KËTË ME URL-NË TUAJ TË FORMULARI NGA FORMSPREE!
-// Pasi të regjistroheni në Formspree, vendosni URL-në tuaj unike këtu.
-const FORM_ENDPOINT = "https://formspree.io/f/meorlvar";
+// VËREJTJE E RËNDËSISHME: Endpoint-i juaj i API-së së Backend-it
+const API_ENDPOINT = "/api/partneritet"; 
 
 const PartnershipPage = () => {
-    // Shteti i formularit
+    // Shteti i formularit - EMRA TË NDRYSHUAR PËR T'U PËRPUTHUR ME BACKEND (partnershipController.js)
     const [formData, setFormData] = useState({
-        name: '',
-        company: '',
+        contactPerson: '', // Ndryshuar nga 'name'
+        companyName: '',   // Ndryshuar nga 'company'
         email: '',
         phone: '',
-        capacity: '',
+        requestType: '',   // Ndryshuar nga 'capacity'
         message: ''
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [isLoading, setIsLoading] = useState(false); // Shtuar për butonin e dërgimit
-    const [error, setError] = useState(null); // Shtuar për trajtimin e gabimeve
+    const [isLoading, setIsLoading] = useState(false); 
+    const [error, setError] = useState(null); 
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        // Përdorim name-in e ri të fushës
         setFormData(prevState => ({
             ...prevState,
             [name]: value
@@ -30,12 +31,12 @@ const PartnershipPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true); // Fillon ngarkimi
+        setIsLoading(true); 
         setError(null);
 
-        // Kjo është logjika REALE e dërgimit në Formspree
+        // Kjo është logjika REALE e dërgimit në Backend-in tuaj
         try {
-            const response = await fetch(FORM_ENDPOINT, {
+            const response = await fetch(API_ENDPOINT, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -43,22 +44,24 @@ const PartnershipPage = () => {
                 body: JSON.stringify(formData)
             });
 
-            if (response.ok) {
-                // Nëse dërgimi është i suksesshëm
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                // Nëse Backend-i kthen përgjigje 201 (sukses)
                 setIsSubmitted(true);
                 // Pastrimi i formës pas suksesit
-                setFormData({ name: '', company: '', email: '', phone: '', capacity: '', message: '' }); 
+                setFormData({ contactPerson: '', companyName: '', email: '', phone: '', requestType: '', message: '' }); 
+
             } else {
-                // Trajtimi i gabimeve nga Formspree
-                const data = await response.json();
-                setError(data.error || "Ndodhi një gabim gjatë dërgimit. Provoni përsëri.");
+                // Trajtimi i gabimeve nga Backend-i juaj
+                setError(data.error || "Ndodhi një gabim në server gjatë dërgimit.");
+                console.error("Backend Error:", data.error); 
             }
         } catch (err) {
-            // Trajtimi i gabimeve të rrjetit (p.sh., URL e gabuar Formspree, ose mungesë interneti)
-            setError("Nuk mund të lidheshim me serverin. Kontrolloni URL-në Formspree ose lidhjen tuaj.");
+            setError("Nuk mund të lidheshim me serverin. Kontrolloni lidhjen ose rrugën e API-së.");
             console.error("Network Error:", err);
         } finally {
-            setIsLoading(false); // Përfundon ngarkimi
+            setIsLoading(false);
         }
     };
 
@@ -112,14 +115,14 @@ const PartnershipPage = () => {
                     {/* Emri dhe Kompania */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label htmlFor="name" className="input-label">Emri i Plotë</label>
+                            <label htmlFor="contactPerson" className="input-label">Emri i Plotë</label>
                             <div className="relative">
                                 <User size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                                 <input 
                                     type="text" 
-                                    id="name" 
-                                    name="name" 
-                                    value={formData.name} 
+                                    id="contactPerson" 
+                                    name="contactPerson" // **NDRYSHUAR**
+                                    value={formData.contactPerson} 
                                     onChange={handleChange} 
                                     className={`${inputClasses} pl-10`}
                                     placeholder="P.sh. Marku Gjikondi"
@@ -129,14 +132,14 @@ const PartnershipPage = () => {
                         </div>
 
                         <div>
-                            <label htmlFor="company" className="input-label">Emri i Kompanisë / Brendit</label>
+                            <label htmlFor="companyName" className="input-label">Emri i Kompanisë / Brendit</label>
                             <div className="relative">
                                 <Building size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                                 <input 
                                     type="text" 
-                                    id="company" 
-                                    name="company" 
-                                    value={formData.company} 
+                                    id="companyName" 
+                                    name="companyName" // **NDRYSHUAR**
+                                    value={formData.companyName} 
                                     onChange={handleChange} 
                                     className={`${inputClasses} pl-10`}
                                     placeholder="P.sh. Italian Shoes S.R.L."
@@ -184,11 +187,11 @@ const PartnershipPage = () => {
 
                     {/* Kapaciteti i Kërkuar (Dropdown) */}
                     <div>
-                        <label htmlFor="capacity" className="input-label">Kapaciteti i Kërkuar Për Muaj (Palë Këpucë)</label>
+                        <label htmlFor="requestType" className="input-label">Kapaciteti i Kërkuar Për Muaj (Palë Këpucë)</label>
                         <select 
-                            id="capacity" 
-                            name="capacity" 
-                            value={formData.capacity} 
+                            id="requestType" 
+                            name="requestType" // **NDRYSHUAR**
+                            value={formData.requestType} 
                             onChange={handleChange} 
                             className={inputClasses}
                             required
