@@ -61,7 +61,7 @@ if (process.env.NODE_ENV === 'production') {
     // B. Për çdo rrugë GET që nuk është API, kthe index.html
     // Kjo i lejon React Router të marrë kontrollin.
     // FIXI KRYESOR: Përdorim app.get('/*', ...) për të shmangur gabimin e PathError
-    app.get('/*', (req, res) => {
+    app.get('/^\/(?!api).*/', (req, res) => {
         res.sendFile(path.resolve(buildPath, 'index.html'));
     });
 
