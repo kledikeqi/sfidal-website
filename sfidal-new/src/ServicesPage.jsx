@@ -3,25 +3,22 @@ import { Link } from 'react-router-dom';
 import { Truck, Ruler, Layers, ShieldCheck, ArrowRight, Zap, Globe, Users } from 'lucide-react'; 
 
 const servicesData = [
-    { icon: <Ruler size={36} className="text-white" />, title: "1. Zhvillimi i Modeleve (Prestarinë)", description: "Ne punojmë me dizajnerët tuaj për të kthyer prototipet në plane të gatshme për prodhim në shkallë. Kjo përfshin optimizimin e shkallëzimit dhe prerjen e mostrave të para.", details: ["Prototipizimi i shpejtë", "Optimizimi i përdorimit të materialit"], theme: 'orange-theme' }, // Zëvendësuam 'color' me 'theme'
+    { icon: <Ruler size={36} className="text-white" />, title: "1. Zhvillimi i Modeleve (Prestarinë)", description: "Ne punojmë me dizajnerët tuaj për të kthyer prototipet në plane të gatshme për prodhim në shkallë. Kjo përfshin optimizimin e shkallëzimit dhe prerjen e mostrave të para.", details: ["Prototipizimi i shpejtë", "Optimizimi i përdorimit të materialit"], theme: 'orange-theme' }, 
     { icon: <Layers size={36} className="text-white" />, title: "2. Prodhimi Fason me Kapacitet", description: "Me makineri moderne dhe ekspertizë të lartë, garantojmë kapacitet të madh prodhimi me përpikëri dhe fokus te lëkura natyrale. Ne prodhojmë sipas standardeve Evropiane.", details: ["Kapacitet prodhimi fleksibël", "Zbatim i saktë i skedave teknike"], theme: 'dark-theme' },
     { icon: <ShieldCheck size={36} className="text-white" />, title: "3. Sigurimi i Standardeve të Cilësisë (QC)", description: "Çdo palë këpucë kalon në kontrolle rigoroze në çdo fazë. Ne sigurojmë që porosia juaj të plotësojë standardet më të larta të cilësisë evropiane.", details: ["Kontrolli i cilësisë në hyrje", "Inspektim në proces i çdo reparti"], theme: 'orange-theme' },
     { icon: <Truck size={36} className="text-white" />, title: "4. Logjistika dhe Eksporti në BE", description: "Ne thjeshtojmë procesin e eksportit. Përdorim regjimin e përpunimit aktiv dhe sigurojmë dërgimin e produktit të gatshëm në destinacionin final në kohë dhe pa probleme doganore.", details: ["Ambalazhimi profesional", "Dokumentacioni i plotë doganor"], theme: 'dark-theme' },
 ];
 
-// Komponenti i thjeshtë i kartës, tani duke përdorur SCSS
 const ServiceCard = ({ icon, title, description, details, theme }) => (
     <div className={`card-style-new service-card transition duration-500`}> 
         <div className={`service-card-header ${theme}`}>
             <div className="icon-container">
                 {icon}
             </div>
-            {/* Teksti tani merr ngjyrën nga klasa e temës */}
             <h3>{title}</h3> 
         </div>
         <div className="service-card-body">
             <p className="text-gray-700 mb-5 text-base">{description}</p>
-            {/* Ul-ja merr stilin e ri nga SCSS */}
             <ul> 
                 {details.map((detail, index) => (
                     <li key={index}>
@@ -36,23 +33,27 @@ const ServiceCard = ({ icon, title, description, details, theme }) => (
 
 const ServicesPage = () => {
   return (
-    // Përdorim klasën SCSS 'page-padding'
     <div className="page-padding min-h-screen font-sans"> 
       
-      {/* Seksioni i Hyrjes - RREGULLUAR QENDËRZIMI ME header-content-wrapper */}
-      <header className="header-content-wrapper mb-16 px-4">
+      {/* Seksioni i Hyrjes - RREGULLIM PËR QENDËRZIM NË KOKËN E FAQES */}
+      <header 
+          className="header-content-wrapper mb-16 px-4" 
+          style={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              alignItems: 'center', 
+              textAlign: 'center' 
+          }}>
         
         <h2>Procesi Fason, i Projektuar për Eksport</h2>
         
         <p className="text-xl text-gray-600 leading-relaxed mx-auto max-w-3xl mb-8">
           Sfidal Sh.P.K ofron një qasje të integruar, të ndarë në faza kritike që garantojnë cilësi dhe zbatim rigoroz të standardeve Evropiane. Ne jemi partneri juaj nga prototipi deri te dera e magazinës.
         </p>
-        <Link to="/partneritet" className="cta-button">
-            Kërko Kapacitetin Tonal të Prodhimit
-        </Link>
+        
       </header>
 
-      {/* Seksioni i Kartave të Shërbimeve - Tani me klasën e re SCSS */}
+      {/* Seksioni i Kartave të Shërbimeve */}
       <div className="services-grid-wrapper"> 
         {servicesData.map((service, index) => (
             <ServiceCard 
@@ -61,23 +62,24 @@ const ServicesPage = () => {
                 title={service.title} 
                 description={service.description} 
                 details={service.details} 
-                theme={service.theme} // Përdorim 'theme'
+                theme={service.theme} 
             />
         ))}
       </div>
 
-      {/* Seksioni i Përgjegjshmërisë - NDRYSHUAR:
-        Shtojmë një div wrapper me ngjyrë të lehtë (bg-gray-100) dhe hapësirë shtesë (py-20) 
-        për t'u ndarë vizualisht nga seksioni i kartave lart.
-      */}
-      <div className="bg-gray-100 py-20 mt-24"> 
+      {/* Seksioni i Përgjegjshmërisë - Rregulluar Hapësira dhe Qendërzimi */}
+      <div className="bg-gray-100 py-24 mt-24"> 
         <div className="max-w-6xl mx-auto px-4">
-            <h3 className="text-center">Angazhimi Mjedisor dhe Social</h3>
-            <p className="text-center text-lg text-gray-600 mb-12">Ne shkojmë përtej cilësisë së produktit, duke garantuar përgjegjshmëri në mjedis dhe etikë pune.</p>
+            
+            <h3 className="text-center text-4xl font-extrabold text-stone-800 mb-4">
+                Angazhimi Mjedisor dhe Social
+            </h3>
+            <p className="text-center text-lg text-gray-600 mb-16 mx-auto max-w-3xl"> 
+                Ne shkojmë përtej cilësisë së produktit, duke garantuar përgjegjshmëri në mjedis dhe etikë pune.
+            </p>
 
             <div className="commitment-grid">
                 
-                {/* Kartat tani kanë ngjyrë të bardhë të pastër brenda sfondit të hirtë */}
                 <div className="commitment-card">
                     <Globe size={40} className="text-orange-600 mx-auto mb-3" />
                     <h4 className="font-bold text-xl mb-2 text-stone-800">Mjedis dhe Mbetje</h4>

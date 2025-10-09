@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sfidal.scss'; 
+import '../src/Sfidal.scss'; 
 import { Link } from 'react-router-dom';
 
 // Imazhi Placeholder (për të simuluar këpucën e shabllonit)
@@ -13,8 +13,27 @@ const IconSvg = ({ children }) => (
   </div>
 );
 
+// Komponenti i Video-s së integruar
+const YoutubeEmbed = ({ embedId }) => (
+  <div className="video-responsive">
+    {/* Përdorim YouTube embed URL formatin */}
+    <iframe
+      width="853"
+      height="480"
+      src={`https://www.youtube.com/embed/${embedId}?modestbranding=1&rel=0`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="Video prezantuese e Sfidal Sh.P.K."
+    />
+  </div>
+);
+
 
 function HomePage() {
+  // ID e videos nga URL: https://www.youtube.com/watch?v=_Mr6iVr6vhw
+  const videoId = "_Mr6iVr6vhw"; 
+
   return (
     <main>
       {/* SEKSIONI 1: HERO - Dizajni i Ri i Shabllonit (Baza e Bardhë + Gradient Diagonal) */}
@@ -48,6 +67,12 @@ function HomePage() {
             className="hero-image"
           />
         </div>
+      </section>
+
+      {/* SEKSIONI 2: VIDEO PREZANTUESE (I RI) */}
+      <section className="video-presentation-section">
+        <h2>Shikoni Fabrikën Tonë në Veprim</h2>
+        <YoutubeEmbed embedId={videoId} />
       </section>
 
 
