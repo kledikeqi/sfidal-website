@@ -11,7 +11,7 @@ function AboutPage() {
       <div className="about-content-wrapper">
         <h1 className="about-title">Rreth Aktivitetit të Sfidal Sh.P.K</h1>
         <p className="about-intro">
-          Shoqëria "SFIDAL" sh.p.k. është regjistruar më **09/10/2009** pranë Qëndrës Kombëtare të Regjistrimit. Ne operojmë me N.I.P.T **K94609201S** dhe jemi specializuar në prodhimin fason të këpucëve me fokus te cilësia dhe eksporti.
+            Shoqëria "SFIDAL" sh.p.k. është regjistruar më <span className="accent-text">09/10/2009</span> pranë Qëndrës Kombëtare të Regjistrimit. Ne operojmë me N.I.P.T <span className="accent-text">K94609201S</span> dhe jemi specializuar në prodhimin fason të këpucëve me fokus te cilësia dhe eksporti.
         </p>
 
         <div className="activity-details card-style-new"> {/* Klasë e re për stilizim */}
