@@ -3,19 +3,11 @@ import { Link } from 'react-router-dom';
 import { Shield, Factory, Users, CheckCircle, Leaf, Handshake } from 'lucide-react';
 
 const QualitySection = () => {
-    // Përdorim klasën SCSS 'page-padding'
     return (
-        // HEQUR: px-4 nga ky div. SCSS do të menaxhojë paddingun anësor.
         <div className="page-padding min-h-screen font-sans">
-            
-            {/* KLASA E RE 'content-wrapper' qendërson të gjithë përmbajtjen */}
             <div className="content-wrapper">
-
-                {/* Headeri dhe Përshkrimi i Qendërzuar */}
                 <header className="max-w-4xl mx-auto text-center mb-16">
                     <Shield size={60} className="text-orange-600 mx-auto mb-4" />
-
-                    {/* <h2> merr stilin nga SCSS (qendërzohet) */}
                     <h2>Angazhimi Rigoroz ndaj Cilësisë dhe Etikës</h2>
 
                     <p className="text-xl text-gray-600 leading-relaxed mx-auto max-w-3xl">
@@ -23,14 +15,13 @@ const QualitySection = () => {
                     </p>
                 </header>
 
-                {/* Seksioni 1: Kontrolli i Procesit - Tani me klasën e re SCSS */}
+                {/* sektori 1: kontrolli i procesit */}
                 <div className="mb-16">
 
                     <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center border-b-2 border-orange-600/50 pb-2">Kontrolli i Cilësisë në Çdo Fazë</h3>
 
                     <div className="qc-grid">
 
-                        {/* Kartat tani kanë stilin e ri SCSS */}
                         <div className="card-style-new">
                             <CheckCircle size={40} className="text-orange-600 mx-auto mb-3" />
                             <h4 className="font-semibold text-xl mb-2 text-gray-900">QC në Hyrje (Input QC)</h4>
@@ -51,13 +42,13 @@ const QualitySection = () => {
                     </div>
                 </div>
 
-                {/* Seksioni 2: Përgjegjshmëria Etike dhe Mjedisore */}
+                {/* sektori 2: pergjegjshmeria etike dhe mjedisore */}
                 <div className="ethical-commitment-section">
                     <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center border-b-2 border-gray-400/50 pb-2">Përgjegjshmëria Etike dhe Mjedisore</h3>
 
                     <div className="ethical-grid">
 
-                        {/* Kolona 1: Mjedisi */}
+                        {/* kolona 1: mjedisi */}
                         <div>
                             <Leaf size={32} className="text-orange-600 mb-3" />
                             <h4 className="font-extrabold text-xl mb-3 text-gray-900">Menaxhimi Mjedisor</h4>
@@ -68,7 +59,7 @@ const QualitySection = () => {
                             </ul>
                         </div>
 
-                        {/* Kolona 2: Etika */}
+                        {/* kolona 2: etika */}
                         <div>
                             <Users size={32} className="text-orange-600 mb-3" />
                             <h4 className="font-extrabold text-xl mb-3 text-gray-900">Etika e Punës dhe Siguria</h4>
@@ -81,9 +72,7 @@ const QualitySection = () => {
                     </div>
                 </div>
 
-                {/* CTA Final - Përdorimi i max-w-6xl mx-auto dhe text-center për qendërzim të sigurt */}
                 <div className='text-center mt-16 max-w-6xl mx-auto'>
-                    {/* Paragrafi qendërzohet brenda këtij divi. */}
                     <p className='text-xl text-gray-700 mb-4 max-w-xl mx-auto'>Jeni gati për një partner që i jep përparësi cilësisë dhe përgjegjshmërisë?</p>
                     <Link to="/partneritet" className='cta-button'>
                         Fillo Partneritetin Tani
